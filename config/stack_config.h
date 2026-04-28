@@ -17,7 +17,7 @@
 #define DEBUG_COTP 0
 #define DEBUG_ISO_SERVER 0
 #define DEBUG_ISO_CLIENT 0
-#define DEBUG_IED_SERVER 1
+#define DEBUG_IED_SERVER 0
 #define DEBUG_IED_CLIENT 0
 #define DEBUG_MMS_CLIENT 0
 #define DEBUG_MMS_SERVER 0
@@ -28,7 +28,7 @@
 #define DEBUG_HAL_ETHERNET 0
 
 /* Maximum MMS PDU SIZE - default is 65000 */
-#define CONFIG_MMS_MAXIMUM_PDU_SIZE 65000
+#define CONFIG_MMS_MAXIMUM_PDU_SIZE 4096
 
 /*
  * Enable single threaded mode
@@ -37,7 +37,7 @@
  * 0 ==> server runs in multi-threaded mode (one thread for each connection and
  * one server background thread )
  */
-#define CONFIG_MMS_SINGLE_THREADED 0
+#define CONFIG_MMS_SINGLE_THREADED 1
 
 #if (WITH_MBEDTLS == 1)
 #define CONFIG_MMS_SUPPORT_TLS 1
@@ -48,10 +48,10 @@
  *
  * WARNING: If set to 1 normal single- and multi-threaded server are no longer working!
  */
-#define CONFIG_MMS_THREADLESS_STACK 0
+#define CONFIG_MMS_THREADLESS_STACK 1
 
 /* number of concurrent MMS client connections the server accepts, -1 for no limit */
-#define CONFIG_MAXIMUM_TCP_CLIENT_CONNECTIONS 100
+#define CONFIG_MAXIMUM_TCP_CLIENT_CONNECTIONS 2
 
 /* activate TCP keep alive mechanism. 1 -> activate */
 #define CONFIG_ACTIVATE_TCP_KEEPALIVE 1
@@ -66,7 +66,7 @@
 #define CONFIG_TCP_KEEPALIVE_CNT 2
 
 /* maximum COTP (ISO 8073) TPDU size - valid range is 1024 - 8192 */
-#define CONFIG_COTP_MAX_TPDU_SIZE 8192
+#define CONFIG_COTP_MAX_TPDU_SIZE 2048
 
 /* Ethernet interface ID for L2 GOOSE and SV */
 #define CONFIG_ETHERNET_INTERFACE_ID "eth0"
@@ -74,10 +74,10 @@
 /* #define CONFIG_ETHERNET_INTERFACE_ID "en0"  // OS X uses enX in place of ethX as ethernet NIC names. */
 
 /* Set to 1 to include generic GOOSE support in the build. Otherwise set to 0 */
-#define CONFIG_INCLUDE_GOOSE_SUPPORT 1
+#define CONFIG_INCLUDE_GOOSE_SUPPORT 0
 
 /* Set to 1 to include generic Sampled Values support in the build. Otherwise set to 0 */
-#define CONFIG_IEC61850_SAMPLED_VALUES_SUPPORT 1
+#define CONFIG_IEC61850_SAMPLED_VALUES_SUPPORT 0
 
 /* Set to 1 to compile for edition 1 server - default is 0 to compile for edition 2 */
 #define CONFIG_IEC61850_EDITION_1 0
@@ -134,7 +134,7 @@
 #define CONFIG_IEC61850_RCB_ALLOW_ONLY_PRECONFIGURED_CLIENT 0
 
 /* The default buffer size of buffered RCBs in bytes */
-#define CONFIG_REPORTING_DEFAULT_REPORT_BUFFER_SIZE 65536
+#define CONFIG_REPORTING_DEFAULT_REPORT_BUFFER_SIZE 8192
 
 /* include support for setting groups */
 #define CONFIG_IEC61850_SETTING_GROUPS 1
@@ -202,22 +202,22 @@
 #define CONFIG_VIRTUAL_FILESTORE_BASEPATH "./vmd-filestore/"
 
 /* Maximum number of open file per MMS connection (for MMS file read service) */
-#define CONFIG_MMS_MAX_NUMBER_OF_OPEN_FILES_PER_CONNECTION 5
+#define CONFIG_MMS_MAX_NUMBER_OF_OPEN_FILES_PER_CONNECTION 1
 
 /* Maximum number of the domain specific data sets - this also includes the static (pre-configured) and dynamic data sets */
-#define CONFIG_MMS_MAX_NUMBER_OF_DOMAIN_SPECIFIC_DATA_SETS 10
+#define CONFIG_MMS_MAX_NUMBER_OF_DOMAIN_SPECIFIC_DATA_SETS 2
 
 /* Maximum number of association specific data sets */
-#define CONFIG_MMS_MAX_NUMBER_OF_ASSOCIATION_SPECIFIC_DATA_SETS 10
+#define CONFIG_MMS_MAX_NUMBER_OF_ASSOCIATION_SPECIFIC_DATA_SETS 2
 
 /* Maximum number of VMD specific data sets */
-#define CONFIG_MMS_MAX_NUMBER_OF_VMD_SPECIFIC_DATA_SETS 10
+#define CONFIG_MMS_MAX_NUMBER_OF_VMD_SPECIFIC_DATA_SETS 2
 
 /* Maximum number of the members in a data set (named variable list) */
-#define CONFIG_MMS_MAX_NUMBER_OF_DATA_SET_MEMBERS 100
+#define CONFIG_MMS_MAX_NUMBER_OF_DATA_SET_MEMBERS 32
 
 /* maximum number of contemporary file upload tasks (obtainFile) per server instance */
-#define CONFIG_MMS_SERVER_MAX_GET_FILE_TASKS 5
+#define CONFIG_MMS_SERVER_MAX_GET_FILE_TASKS 1
 
 /* Definition of supported services */
 #define MMS_DEFAULT_PROFILE 1
